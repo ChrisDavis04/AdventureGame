@@ -30,16 +30,22 @@ def getGame():
 
 def playNode(game, currentGame):
     (description, menuA, nodeA, menuB, nodeB) = game[currentGame]
-    
-    print (f"""
+    keepGoing = True
+    while keepGoing:
+        print (f"""
            {description}
     1) {menuA}
     2) {menuB}
     """)
-    response = input("What is your choice? 1 or 2?: ")
-    if response == "1":
-        nextNode = nodeA
-    elif response == "2":
-        nextNode = nodeB
-    return nextNode
+        response = input("What is your choice? 1 or 2?: ")
+        if response == "1":
+            nextNode = nodeA
+            keepGoing = False
+        elif response == "2":
+            nextNode = nodeB
+            keepGoing = False
+        else:
+            print("Look...buddy...chum...I know that making choices is difficult especially when these choices determine whether you live or die BUT at least try to play along! THERE ARE ONLY TWO CHOICES AND THERE'S NO ESCAPING IT! You can quit after you've reached an ending sooooo yeah...have fun. Now then where were we? OH yeah!")
+            nextNode = currentGame
+        return nextNode
 main()
